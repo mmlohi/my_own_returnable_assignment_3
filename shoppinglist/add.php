@@ -3,7 +3,8 @@ require_once 'inc/functions.php';
 require_once 'inc/headers.php';
 
 $input = json_decode(file_get_contents('php://input'));
-$description = filter_var($input->description,$input->amount,FILTER_UNSAFE_RAW);
+$description = filter_var($input->description,FILTER_UNSAFE_RAW);
+$amount = filter_var($input->amount,FILTER_SANITIZE_STRING);
 
 try {
   $db=openDb();
